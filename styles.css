@@ -1,0 +1,108 @@
+body {
+  all: unset;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  width: 80%;
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: 0.25rem;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  font: 1.5rem "Jetbrains Mono";
+  transition: background-color 0.1s ease-in-out;
+}
+
+header {
+  display: flex;
+  background-color: var(--background-color-transparent);
+  justify-content: space-between;
+  width: 100%;
+  position: sticky;
+  top: 0;
+}
+
+h2 {
+  align-self: baseline;
+}
+
+nav {
+  display: flex;
+}
+
+h4 {
+  margin: 0px;
+  color: var(--accent-color);
+  text-decoration-color: var(--accent-color);
+}
+a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding-inline: 0.5rem;
+}
+p {
+  align-self: baseline;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: light-dark(#dddddd, #242424) ;
+  --background-color-transparent: light-dark(#ddddddee, #242424ee) ;
+  --background-hover-color: light-dark(#cccccc, #484848) ;
+  --text-color: light-dark(#242424, #dddddd);
+  --accent-color: light-dark(#093c3c, #19a7a7);
+}
+
+:root:has(#theme_button:checked){
+  color-scheme: light;
+}
+
+#theme_button_container {
+  background: url("icons/dark_mode.svg");
+  background-size: 100% auto;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#theme_button {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+#theme_button_container:has(#theme_button:checked){
+  background: url("icons/light_mode.svg");
+  background-size: 100% auto;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#post_list {
+  width: 100%;
+  padding: 1rem;
+}
+
+#post_list_item {
+  width: 100%;
+  padding: 1rem;
+}
+
+#post_list_item:hover {
+  background-color: var(--background-hover-color);
+}
+
+.link {
+  color: var(--accent-color);
+  padding-inline: 0px
+}
