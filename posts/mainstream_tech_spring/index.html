@@ -1,0 +1,112 @@
+<html>
+<head>
+    <!-- jetbrains mono import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+
+    <title> lstd - why this site exists</title>
+    <!-- global styles-->
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/lstd/styles.css">
+</head>
+<body>
+    <header>
+      <nav>
+        <a href="/">
+          <h4>
+            Home
+          </h4>
+        </a>
+        <!-- <a href="/br/posts/{translated post}"> -->
+        <!--   <h4> -->
+        <!--     PT -->
+        <!--   </h4> -->
+        <!-- </a> -->
+      </nav>
+      <label id="theme_button_container">
+        <input id="theme_button" type="checkbox">
+        <span id="theme_icon"></span>
+      </label>
+    </header>
+    <h1>
+      Spring
+    </h1>
+    <h2> History </h2>
+    <p> 
+      {{ TODO }}
+    </p>
+    <!-- Most of the confusion in java is more about the terminology than anything else -->
+    <h2> Beans </h2>
+    <p>
+      beans are just plain java objects(classes) that are managed by the inversion of control container.
+    </p>
+    <h2> Inversion of Control(IoC) Container </h2>
+    <p>
+      lets start with the name, why inversion of control? this inversion is about the way we 
+      manage objects(classes). Basically in java you create a manage the objects(classes) 
+      like this:
+    </p>
+<code>
+class MyClass { 
+
+  int number;
+
+  public MyClass(int number) {
+    this.number = number;
+  }
+}
+
+public class App {
+  public static void main(String[] args) {
+    MyClass myClass = new MyClass(0);
+  }
+}
+</code>
+    <p>
+      nothing new here, you define a class and create an instance of the class and assign it to a variable.
+      So, how is that with Inversion of Control.
+    </p>
+<code>
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
+
+@Component
+class MyClass { 
+
+  int number;
+
+  public MyClass(int number) {
+    this.number = number;
+  }
+}
+
+@Configuration
+@ComponentScan(basePackageClasses = MyClass.class)
+class Config {
+
+  @Bean
+  int getNumber() {
+    return 0;
+  }
+}
+
+public class App{
+  public static void main(String[] args) {
+    ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+    MyClass myClass = context.getBean("myClass", MyClass.class);
+  }
+}
+</code>
+    <h2> Building </h2>
+    <p> 
+      {{ TODO }}
+    </p>
+</body>
+</html>
