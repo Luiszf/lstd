@@ -4,21 +4,30 @@ body {
   align-items: center;
   flex-direction: column;
 
-  width: 80%;
   min-height: 100dvh;
   margin-inline: auto;
+  width: 95%;
   padding: 0.25rem;
 
   background-color: var(--background-color);
   color: var(--text-color);
 
+  /* Discover why the font look so small in mobile */
   font: 1.5rem "Jetbrains Mono";
   transition: background-color 0.1s ease-in-out;
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    width: 80%;
+  }
 }
 
 code {
   white-space: pre;
   align-self: baseline;
+  overflow: scroll;
+  width: 100%;
 }
 
 header {
