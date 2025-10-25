@@ -26,7 +26,7 @@ body {
 code {
   white-space: pre;
   align-self: baseline;
-  overflow: scroll;
+  overflow: auto;
   width: 100%;
 }
 

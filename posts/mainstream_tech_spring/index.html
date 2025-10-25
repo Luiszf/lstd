@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 
 
-    <title> lstd - why this site exists</title>
+    <title> Understanding Spring </title>
     <!-- global styles-->
     <link rel="icon" type="image/x-icon" href="/favicon.png">
     <link rel="stylesheet" type="text/css" href="/lstd/styles.css">
@@ -33,21 +33,27 @@
     <h1>
       Spring
     </h1>
+    <h2> Requirements </h2>
+    <p> 
+      {{ TODO }}
+    </p>
     <h2> History </h2>
     <p> 
       {{ TODO }}
     </p>
-    <!-- Most of the confusion in java is more about the terminology than anything else -->
+    <!-- Explain that beans have different meaning in spring/javaBeans/JakartaEE -->
     <h2> Beans </h2>
     <p>
-      beans are just plain java objects(classes) that are managed by the inversion of control container.
+      beans are just plain java objects that are managed by the inversion of control container.
+      Note that they are not the same as JavaBeans or Jakarta EE Beans.
     </p>
     <h2> Inversion of Control(IoC) Container </h2>
     <p>
       lets start with the name, why inversion of control? this inversion is about the way we 
-      manage objects(classes). Basically in java you create a manage the objects(classes) 
+      manage objects. Basically in java you normally create a manage the objects(classes) 
       like this:
     </p>
+<!-- TODO: work on syntax highlighting -->
 <code>
 class MyClass { 
 
@@ -87,7 +93,7 @@ class MyClass {
   }
 }
 
-@Configuration
+@Configuration 
 @ComponentScan(basePackageClasses = MyClass.class)
 class Config {
 
@@ -97,13 +103,25 @@ class Config {
   }
 }
 
-public class App{
+public class App {
   public static void main(String[] args) {
     ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
     MyClass myClass = context.getBean("myClass", MyClass.class);
   }
 }
 </code>
+    <!-- rewrite this for clarity -->
+    <p>
+      top to bottom, the Component annotation enables annotation classpath scanning and 
+      define it self as a bean. the Configuration annotation signals that the class is 
+      a configuration class. the component scan annotation defines the filters that 
+      the scan matches with the classes that have classpath scanning available. the bean
+      annotation define it self as a bean. ApplicationContext is the central interface to 
+      provide configuration for an application, in this case we only use the bean factory
+      capabities. AnnotationConfigApplicationContext represents the context of our spring
+      Application. the function get bean is from the bean factory Capabilities of the 
+      ApplicationContext that is used to instantiate the bean object, MyClass in this case.
+    </p>
     <h2> Building </h2>
     <p> 
       {{ TODO }}
